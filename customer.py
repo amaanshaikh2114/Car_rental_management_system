@@ -5,9 +5,8 @@ import mysql.connector
 def customer_rent_car(customer_id, car_id, no_of_days):
     db = connect_to_db()
     cursor = db.cursor()
-    cursor.execute('SELECT Status FROM Car WHERE Car_ID = %s', (car_id,))  # Corrected line
+    cursor.execute('SELECT Status FROM Car WHERE Car_ID = %s', (car_id,))
     result = cursor.fetchone()  # Fetch the status value directly
-    print(result)
     if result != None:
         status = result[0]
         if status == 'available':
@@ -22,7 +21,6 @@ def customer_rent_car(customer_id, car_id, no_of_days):
             # getting last customer who booked the car
             cursor.execute('SELECT Customer_ID FROM Rental WHERE Car_ID = %s ORDER BY Issue_date DESC LIMIT 1', (car_id,))      
             cust = cursor.fetchone()
-            # print(cust)
             if cust[0] == customer_id:
                 print('Already booked')
                 messagebox.showerror('Error','You have already booked the requested car!')

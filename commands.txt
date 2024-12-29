@@ -1,3 +1,5 @@
+Commands for database:
+
 CREATE TABLE Customer (
     Customer_ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(30) NOT NULL,
@@ -12,7 +14,6 @@ CREATE TABLE Customer (
     CONSTRAINT CKF2 CHECK (Email LIKE '%@%' AND Email NOT LIKE '%@%@%' AND Email LIKE '%.COM')
 );
 
-
 CREATE TABLE Car (
     Car_ID INT AUTO_INCREMENT PRIMARY KEY,
     Model VARCHAR(50) NOT NULL,
@@ -22,7 +23,6 @@ CREATE TABLE Car (
     Rate_per_day INT NOT NULL,
     CONSTRAINT UKF1 UNIQUE (License_Plate)
 );
-
 
 CREATE TABLE Rental (
     Rental_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,7 +42,6 @@ CREATE TABLE Payment (
     Amount DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (Rental_ID) REFERENCES Rental(Rental_ID)
 );
-
 
 INSERT INTO Car (Car_ID, Model, Year, License_Plate, Status, Rate_per_day)
 VALUES 
@@ -68,19 +67,6 @@ VALUES
 |      8 | Volkswagen Jetta | 2015 | PQR876        | available |        50.00 |
 |      9 | Audi A7          | 2019 | SDF456        | available |        70.00 | (can be added by admin)
 +--------+------------------+------+---------------+-----------+--------------+
-
-
-INSERT INTO Customer (Customer_ID, Name, Email, Phone, Password)
-VALUES 
-('100','Amaan Shaikh','amaan@gmail.com','7895632415','admin123'),
-('1', 'John Doe', 'johndoe@example.com', '1598764325', 'password123'),
-('2', 'Jane Smith', 'janesmith@example.com', '1234567894', 'password456'),
-('3', 'Emily Johnson', 'emilyj@example.com', '1598753624', 'password789'),
-('4', 'Michael Brown', 'michaelb@example.com', '3265984175', 'password101'),
-('5', 'Sarah Davis', 'sarahd@example.com', '1598476235', 'password202'),
-('6', 'David Wilson', 'davidw@example.com', '9162358463', 'password303'),
-('7', 'Laura Martinez', 'lauram@example.com', '3295846713', 'password404'),
-('8', 'James Taylor', 'jamest@example.com', '3698574621', 'password505');
 
 
 Test cases:
