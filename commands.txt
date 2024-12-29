@@ -1,0 +1,100 @@
+CREATE TABLE Customer (
+    Customer_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(30) NOT NULL,
+    Phone VARCHAR(10) NOT NULL,
+    Email VARCHAR(35),
+    Password VARCHAR(50) NOT NULL,
+    Is_Admin BOOLEAN NOT NULL DEFAULT FALSE,
+    CONSTRAINT UKF1 UNIQUE (Phone),
+    CONSTRAINT UKF2 UNIQUE (Email),
+    CONSTRAINT UKF3 UNIQUE (Password),
+    CONSTRAINT CKF1 CHECK (LENGTH(Phone)=10),
+    CONSTRAINT CKF2 CHECK (Email LIKE '%@%' AND Email NOT LIKE '%@%@%' AND Email LIKE '%.COM')
+);
+
+
+CREATE TABLE Car (
+    Car_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Model VARCHAR(50) NOT NULL,
+    Year INT NOT NULL,
+    License_Plate VARCHAR(15) NOT NULL,
+    Status ENUM('available', 'rented') DEFAULT 'available' NOT NULL,
+    Rate_per_day INT NOT NULL,
+    CONSTRAINT UKF1 UNIQUE (License_Plate)
+);
+
+
+CREATE TABLE Rental (
+    Rental_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Customer_ID INT NOT NULL,
+    Car_ID INT NOT NULL,
+    Issue_date DATE NOT NULL,
+    Return_date DATE NOT NULL,
+    No_of_days INT NOT NULL,
+    Status VARCHAR(20),
+    FOREIGN KEY (Customer_ID) REFERENCES Customer(Customer_ID)
+);
+
+CREATE TABLE Payment (
+    Payment_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Rental_ID INT NOT NULL,
+    Payment_Date DATE NOT NULL,
+    Amount DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (Rental_ID) REFERENCES Rental(Rental_ID)
+);
+
+
+INSERT INTO Car (Car_ID, Model, Year, License_Plate, Status, Rate_per_day)
+VALUES 
+(1, 'Toyota Camry', 2022, 'ABC123', 'available', 900),
+(2, 'Honda Accord', 2021, 'XYZ789', 'available', 800),
+(3, 'Ford Focus', 2020, 'LMN456', 'available', 1300),
+(4, 'Chevrolet Malibu', 2019, 'DEF321', 'available', 1150),
+(5, 'Nissan Altima', 2018, 'GHI654', 'available', 750),
+(6, 'Hyundai Sonata', 2017, 'JKL987', 'available', 850),
+(7, 'Kia Optima', 2016, 'MNO543', 'available', 1250),
+(8, 'Volkswagen Jetta', 2015, 'PQR876', 'available', 1050);
+
++--------+------------------+------+---------------+-----------+--------------+
+| Car_ID | Model            | Year | License_Plate | Status    | Rate_per_day |
++--------+------------------+------+---------------+-----------+--------------+
+|      1 | Toyota Camry     | 2022 | ABC123        | available |        75.00 |
+|      2 | Honda Accord     | 2021 | XYZ789        | available |        60.00 |
+|      3 | Ford Focus       | 2020 | LMN456        | available |        45.00 |
+|      4 | Chevrolet Malibu | 2019 | DEF321        | available |        25.00 |
+|      5 | Nissan Altima    | 2018 | GHI654        | available |        30.00 |
+|      6 | Hyundai Sonata   | 2017 | JKL987        | available |        25.00 |
+|      7 | Kia Optima       | 2016 | MNO543        | available |        35.00 |
+|      8 | Volkswagen Jetta | 2015 | PQR876        | available |        50.00 |
+|      9 | Audi A7          | 2019 | SDF456        | available |        70.00 | (can be added by admin)
++--------+------------------+------+---------------+-----------+--------------+
+
+
+INSERT INTO Customer (Customer_ID, Name, Email, Phone, Password)
+VALUES 
+('100','Amaan Shaikh','amaan@gmail.com','7895632415','admin123'),
+('1', 'John Doe', 'johndoe@example.com', '1598764325', 'password123'),
+('2', 'Jane Smith', 'janesmith@example.com', '1234567894', 'password456'),
+('3', 'Emily Johnson', 'emilyj@example.com', '1598753624', 'password789'),
+('4', 'Michael Brown', 'michaelb@example.com', '3265984175', 'password101'),
+('5', 'Sarah Davis', 'sarahd@example.com', '1598476235', 'password202'),
+('6', 'David Wilson', 'davidw@example.com', '9162358463', 'password303'),
+('7', 'Laura Martinez', 'lauram@example.com', '3295846713', 'password404'),
+('8', 'James Taylor', 'jamest@example.com', '3698574621', 'password505');
+
+
+Test cases:
+1. Customer trying to rent a car i.e. available ------- Done
+2. Customer trying to rent a car rented by other user ------- Done
+3. Customer trying to rent a car not present in database at all ----- Done
+4. Customer trying to return a car that he/she rented ------- Done
+5. Customer trying to return a car that other user rented
+6. Customer trying to return a car with rental id not present in database ----- Done
+7. Registering a new user with all unique deatils ------- Done
+8. Registering a new user with similar deatils resulting in conflict & exception ------- Done
+9. Admin adding a unique car ------- Done
+10. Admin adding a car with same details(License_Plate) resulting in exception ------- Done
+11. Admin deleting a car i.e. is available in database ------ Done
+12. Admin deleting a car that's not available in database ----- Done
+13. Correct login ------ Done
+14. Incorrect login credentials and user login type(out fo database cases) ----- Done
