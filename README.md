@@ -74,9 +74,9 @@ The database schema includes the following tables:
 - **Payment**: Consists of payments made for different rentals (Payment_ID, Rental_ID,Payment_Date, Amount)
 
 ## Screenshots
-![reg_login_page](https://github.com/user-attachments/assets/9a7ed8d9-b074-49c0-b03a-d6e65111ecb0)
-![customer_dashboard](https://github.com/user-attachments/assets/06865726-50a3-42ee-8a88-604c9db178a2)
-![admin_dashboard](https://github.com/user-attachments/assets/16171493-262f-4815-b49d-621801d4fb38)
+![reg_login_page](screenshots/reg_login_page.png)
+![customer_dashboard](screenshots/customer_dashboard.png)
+![admin_dashboard](screenshots/admin_dashboard.png)
 
 
 ## Contributing
