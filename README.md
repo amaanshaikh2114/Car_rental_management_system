@@ -1,4 +1,4 @@
-# Car Rental Management System
+ # Car Rental Management System
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -83,4 +83,4 @@ The database schema includes the following tables:
 Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
 
 ## Contact
-For any questions or inquiries, please contact [Amaan Shaikh](mailto:amaanmazhar211@gmail.com).
+For any questions or inquiries, please contact [Amaan Shaikh](mailto:amaanmazhar211@gmail.com). Send a mail to amaanmazhar211@gmail.com
