@@ -74,9 +74,11 @@ The database schema includes the following tables:
 - **Payment**: Consists of payments made for different rentals (Payment_ID, Rental_ID,Payment_Date, Amount)
 
 ## Screenshots
-![reg_login_page](screenshots/reg_login_page.png)
-![customer_dashboard](screenshots/customer_dashboard.png)
-![admin_dashboard](screenshots/admin_dashboard.png)
+<p align="center">
+  <img src="screenshots/reg_login_page.png" alt="Register and login page" width="300"/>
+  <img src="screenshots/customer_dashboard.png" alt="Customer dashboard" width="700"/>
+  <img src="screenshots/admin_dashboard.png" alt="Admin dashboard" width="700"/>
+</p>
 
 ## Contributing
 Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
