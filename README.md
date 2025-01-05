@@ -33,7 +33,7 @@ The Car Rental Management System is a comprehensive application designed to stre
    
    - git clone https://github.com/amaanshaikh2114/car_rental_management_system.git
    
-   - cd car-rental-management-system
+   - cd car_rental_management_system
     
 
 2. **Install required Python packages:**
