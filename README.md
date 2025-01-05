@@ -51,7 +51,7 @@ The Car Rental Management System is a comprehensive application designed to stre
 ## Usage
 1. **Run the application:**
     
-    python app.py
+    Type 'python app.py' in your terminal after redirecting to the directory in which the project has been cloned.
     
 
 2. **Customer Dashboard:**
@@ -77,7 +77,6 @@ The database schema includes the following tables:
 ![reg_login_page](screenshots/reg_login_page.png)
 ![customer_dashboard](screenshots/customer_dashboard.png)
 ![admin_dashboard](screenshots/admin_dashboard.png)
-
 
 ## Contributing
 Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
